@@ -14,6 +14,20 @@ class Transaction:
                 f"sender={self.sender}, receiver={self.receiver}, amount={self.amount}, "
                 f"source_or_destination={self.source_or_destination})")
 
+    def to_df(self):
+        data = {
+                "Date": self.date[:10],
+                "Type": self.trans_type,
+                "Note": self.note,
+                "Sender": self.sender,
+                "Receiver": self.receiver,
+                "Amount ($)": self.amount,
+                "Source/Destination": self.source_or_destination,
+            }
+
+
+        return data
+
 
 
 

@@ -1,7 +1,0 @@
-goal of this project:
- - parse csv files easily (venmo data)
- - run all sorts of calculations and analysis
- - make it easy to interact with these methods
- - create an algorithm that determines if a message on venmo is a spurt of random letters
-    or an actual message (create a scale/strength rating)
-    - possibly based on distance from each key on a phone

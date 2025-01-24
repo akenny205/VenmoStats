@@ -2,7 +2,7 @@ import string
 from nltk.corpus import words
 from collections import Counter
 import re
-from venmo import get_all_transactions
+from venmo import get_all_first_and_last_names
 
 
 word_list = set(words.words())
@@ -42,14 +42,6 @@ def calculate_repetition_score(message):
         repetition_score = 0  # Edge case: if message is empty
 
     return repetition_score
-
-def get_all_first_and_last_names():
-    names = set()
-    for transaction in get_all_transactions():
-        if transaction.trans_type in ("Charge", "Payment"):
-            names.add(transaction.sender)
-            names.add(transaction.receiver)
-    return names
 
 names = get_all_first_and_last_names()
 
@@ -93,9 +85,9 @@ def keyboard_mashing_probability(message):
 
     # Combine scores into an overall score (between 0 and 1)
     # Assign weights to different scores, adjust as needed
-    total_score = (0.40 * repetition_score +
+    total_score = (0.35 * repetition_score +
                    0.05 * non_alphabetic_score +
-                   0.5 * meaningfulness_score +
+                   0.55 * meaningfulness_score +
                    0.05 * unique_char_score)
     return round(total_score,2)
 
