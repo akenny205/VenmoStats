@@ -22,6 +22,13 @@ so the code knows who is the user.
 This tool was made using streamlit. Simply run "streamlit run Home.py" and the localhost streamlit 
 window will open in your browser
 
+# Example Usage:
+![Screenshot 2025-01-26 at 6 04 57 PM](https://github.com/user-attachments/assets/da811861-ab11-442b-88b1-1e820f80e1bb)
 
 
+<img src="https://github.com/user-attachments/assets/a3d591ff-1796-4cab-ad0c-019d1820efba" width="400" />
+
+<img src="https://github.com/user-attachments/assets/aa9a7b66-bd28-434e-8e29-7abb116ffb11" width="350" />
+
+<img src="https://github.com/user-attachments/assets/ff156465-ed69-43aa-8e54-27dd2d0dadcc" width="550" />
 
