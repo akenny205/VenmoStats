@@ -1,6 +1,6 @@
 # VenmoStats
 VenmoStats is a simple data analytics tool to explore a users historical
-Venmo data. It has data on all transactions, with the note sent, amount paid, and date of the transaction.
+Venmo data. It has data on all transactions with the note sent, amount paid, and date of the transaction.
 
 ### Features include:
 - Viewing all transactions
