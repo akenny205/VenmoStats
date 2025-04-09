@@ -6,8 +6,7 @@ from transactions import Transaction
 # If you want to use this yourself, simply change the working directory,
 # and the acc_holder name. Make sure to use the same naming convention for the csv files
 folder = "/Users/andrewkenny/Desktop/PythonProjects/VenmoStats/transactions/"
-csvs = os.listdir(folder)
-csvs = [folder + s for s in csvs if s.startswith('transaction_history')]
+csvs = [folder + f for f in os.listdir(folder) if f != '.DS_Store'] # get rid of metadata file
 acc_holder = "Andrew Kenny"
 
 
@@ -20,7 +19,7 @@ def get_transactions(df):
             note = str(row[5])
             sender = str(row[6])
             receiver = str(row[7])
-            amount = float(row[8].replace('$', '').replace('+','').replace(' ', ''))
+            amount = float(row[8].replace('$', '').replace('+','').replace(' ', '').replace(',',''))
             funding_source = row[14]
             if trans_type == "Standard Transfer":
                 funding_source = row[15]
@@ -107,7 +106,7 @@ def total_received_name(name):
     return round(sum(abs(trans.amount) for trans in ALL_TRANSACTIONS if name.lower() in trans.receiver.lower()),2)
 
 def total_sent_and_received():
-    return total_sent() + total_received()
+    return round(total_sent() + total_received(),2)
 
 def total_sent_and_received_name(name):
     return round(total_sent_name(name) + total_received_name(name),2)
@@ -154,7 +153,6 @@ def get_topX_received(x):
         received_totals[total] = round(received_totals[total],2)
     sorted_received = sorted(received_totals.items(), key=lambda item: item[1], reverse=True)
     return sorted_received[:x]
-print(get_topX_received(5))
 
 def get_topX_sent_and_received(x):
     totals = defaultdict(float)
@@ -195,6 +193,8 @@ def get_all_data():
             f"Total Sent and Received: ${total_sent_and_received()}",
     ]
 
-
-
-
+res = []
+for name in get_all_names():
+    res.append([name, get_all_data_name(name)])
+res = sorted(res, key = lambda x: total_sent_and_received_name(x[0]))
+lprint(res)
